@@ -15,7 +15,7 @@ public class Date {
 	//variables d'instance
 	int jour;
 	int mois;
-	int année;
+	int annee;
 	
 	
 	
@@ -29,6 +29,6 @@ public class Date {
 		Date d = new Date();
 		d.jour = Integer.parseInt(args[0]);
 		d.mois = Integer.parseInt(args[1]);
-		d.année = Integer.parseInt(args[2]);
+		d.annee = Integer.parseInt(args[2]);
 	}
 }
