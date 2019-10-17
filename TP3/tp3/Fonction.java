@@ -8,7 +8,7 @@ package tp3;
  *
  */
 
-public class Test {
+public class Fonction {
 
 	//================Methodes================//
 	/**
@@ -37,14 +37,14 @@ public class Test {
 	/**
 	 * Cette methode renvoie le perimetre d'un carre sur base de la longueur n de son cote
 	 * @param n la longueur d'un cote du carre, ce nombre doit etre un entier positif
-	 * @return le perimetre du carre 
+	 * @return le perimetre du carre sinon si nombre negatif retourne -1
 	 */
 	public int perimetre(int n) {
 		if(n > 0) {
 			return n*4; 
 		}
 		else {
-			System.out.println("longueur invalide");
+			return -1; 
 		}
 	}
 	
@@ -68,18 +68,18 @@ public class Test {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		//Test nbrCarre = new Test();
+		//Fonction nbrCarre = new Fonction();
 		//nbrCarre.carre(10);
 		//System.out.println(nbrCarre.carre(10));
 		
-		//Test nbrPair = new Test(); 
+		//Fonction nbrPair = new Fonction(); 
 		//System.out.println(nbrPair.pair(-1));
 		
-		//Test phrase = new Test();
+		//Fonction phrase = new Fonction();
 		//System.out.println(phrase.caract('a', "bb"));
 		
-		Test peri = new Test();
-		System.out.println(peri.perimetre(3));
+		//Fonction peri = new Fonction();
+		//System.out.println(peri.perimetre());
 	}
 
 }
