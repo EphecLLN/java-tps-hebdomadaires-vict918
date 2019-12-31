@@ -1,22 +1,36 @@
-
 package bibliothèque;
 
 import java.util.Arrays;
 
-import tp5.Employe;
-
-/**
- * @author victor
- *
- */
 public class Livre {
-	protected String nomAuteur; 
-	protected String titre; 
-	protected int anneEdition; 
-	protected String [] pageLivre; 
-	//pageLivre = new String[100];
+
+	protected String nomAuteur;
+	protected String titre;
+	protected int anneeEdition;
+	protected String [] pages;
+		
 	
-	/*--------Getters & Setters---------*/
+	//----------------------CONSTRUCTEURS-----------------------//
+	/**
+	 * 
+	 */
+	public Livre(String nomAuteur, String titre, int anneeEdition) {
+		super();
+		setNomAuteur(nomAuteur);
+		setTitre(titre);
+		setAnneeEdition(anneeEdition);
+		pages = new String[100];
+	}
+	
+	public Livre(String nomAuteur, String titre, int anneeEdition, String pages[]) {
+		super();
+		setNomAuteur(nomAuteur);
+		setTitre(titre);
+		setAnneeEdition(anneeEdition);
+		setPage(pages);
+	}
+	
+	//---------------------GET & SET------------------------//
 	/**
 	 * @return the nomAuteur
 	 */
@@ -29,8 +43,8 @@ public class Livre {
 	 */
 	public void setNomAuteur(String nomAuteur) {
 		if(nomAuteur == "") {
-			this.nomAuteur = "Auteur inconnu"; 
-		} else {
+			this.nomAuteur = "Auteur inconnu";
+		}else {
 			this.nomAuteur = nomAuteur;
 		}
 	}
@@ -48,72 +62,123 @@ public class Livre {
 	public void setTitre(String titre) {
 		if(titre == "") {
 			this.titre = "Titre inconnu";
-		} else{
+		}else {
 			this.titre = titre;
 		}
 	}
 
 	/**
-	 * @return the anneEdition
+	 * @return the anneeEdition
 	 */
-	public int getAnneEdition() {
-		return anneEdition;
+	public int getAnneeEdition() {
+		return anneeEdition;
 	}
 
 	/**
-	 * @param anneEdition the anneEdition to set
+	 * @param anneeEdition the anneeEdition to set
 	 */
-	public void setAnneEdition(int anneEdition) {
-		this.anneEdition = anneEdition;
-	}
-
-	/**
-	 * @return the pageLivre
-	 */
-	public String[] getPageLivre() {
-		return pageLivre;
-	}
-
-	/**
-	 * @param pageLivre the pageLivre to set
-	 */
-	public void setPageLivre(String[] pageLivre) {
-		this.pageLivre = pageLivre;
+	public void setAnneeEdition(int anneeEdition) {
+		this.anneeEdition = anneeEdition;
 	}
 	
-	/*-----------Methodes---------------------*/
+	
+	/**
+	 * @param pages the pages to set
+	 */
+	public void setPage(String[] pages) {
+		this.pages = pages;
+	}
+
+	/**
+	 * @param i
+	 * @return
+	 */
+	public String getPage(int i) {
+		if(i >= 0 && i < this.pages.length) {
+			return this.pages[i];
+		}
+		else {
+			return null;
+		}
+	}
+	
+	/**
+	 * @param i
+	 * @param p
+	 * @return
+	 */
+	public String setPage(int i, String p) {
+		if(i >= 0 && i < this.pages.length) {
+			String valeur = this.pages[i];
+			this.pages[i] = p;
+			return valeur;	
+		}
+		else {
+			return " ";
+		}
+	}
+	
+	
+	
+	public String getFirstPage() {
+		return this.pages[0];
+	}
+	
+	public String extrait() {
+		return this.pages[0];
+	}
+
+	//----------------------EQUALS & hashCode-----------------------//
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + anneEdition;
+		result = prime * result + anneeEdition;
 		result = prime * result + ((nomAuteur == null) ? 0 : nomAuteur.hashCode());
-		result = prime * result + Arrays.hashCode(pageLivre);
+		result = prime * result + Arrays.hashCode(pages);
 		result = prime * result + ((titre == null) ? 0 : titre.hashCode());
 		return result;
 	}
 
-	/*
-	 *@return true si l'object en parametre est le même que Livre 
-	 *@return Sinon false
-	 */
-	public boolean equals(Object other) {
-	    if (other != null && other instanceof Livre) {
-	    	Livre l = (Livre) other;
-	        return ((this.titre == l.titre));
-	    } else {
-	        return false;
-	    }
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!(obj instanceof Livre))
+			return false;
+		Livre other = (Livre) obj;
+		if (anneeEdition != other.anneeEdition)
+			return false;
+		if (nomAuteur == null) {
+			if (other.nomAuteur != null)
+				return false;
+		} else if (!nomAuteur.equals(other.nomAuteur))
+			return false;
+		if (!Arrays.equals(pages, other.pages))
+			return false;
+		if (titre == null) {
+			if (other.titre != null)
+				return false;
+		} else if (!titre.equals(other.titre))
+			return false;
+		return true;
+	}
+	
+	//---------------------TOSTRING------------------------//
+	@Override
+	public String toString() {
+		return "nomAuteur : " + nomAuteur + "  titre : " + titre + "  anneeEdition : " + anneeEdition;
 	}
 
-
-	/*-------------Main------------------*/
-	/**
-	 * @param args
-	 */
+	//-----------------------MAIN-------------------------//
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		Livre livre1 = new Livre("victor","Test", 2019);
+		
+		livre1.setNomAuteur("");
+		System.out.println(livre1.nomAuteur);
+		
+		livre1.setPage(0, "Yolo");
+		System.out.println(livre1.extrait());
 	}
 
 }

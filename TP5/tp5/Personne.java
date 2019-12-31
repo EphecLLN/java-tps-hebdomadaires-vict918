@@ -88,8 +88,14 @@ public class Personne {
 	}
 /*=================Main===================*/
 	public static void main(String[] args) {
-		Personne p = new Personne("cotton", "victor", 123);
-		System.out.println(p);
+		//Personne p = new Personne("cotton", "victor", 123);
+		//System.out.println(p);
+		Personne pers = new Personne("Jules", "Dupont", 123234);
+		Personne emp = new Employe("Jules", "Dupont", 123234, 1500, "EPHEC");
+		Personne ind = new Independant("Jules", "Dupont", 123234, "BE0123456789");
+		System.out.println(pers);
+		System.out.println(emp);
+		System.out.println(ind);
 	}
 
 }

@@ -1,6 +1,0 @@
-
-/**
- * @author victor
- *
- */
-package bibliothèque;

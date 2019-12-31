@@ -1,17 +1,18 @@
 package tp5;
 
-
 /**
- * Cette classe modélise une calculatrice simplifié avec une valeure courante et trois opérations. 
- * @author victor
+ * Cette classe modÃ©lise une calculatrice simplifiÃ©e avec une valeur courante et trois opÃ©rations. 
+ * @author Victor Cotton
  *
  */
 public class Calculatrice {
-	
-	private double valeurCourante; // Stocke la valeur affichée sur l'écran de la calculatrice
 
-/*================Constructeur===========*/
+/*=============VARIABLE D INSTANCES=================*/
+
+	private double valeurCourante; // Stocke la valeur affichÃ©e sur l'Ã©cran de la calculatrice
 	
+/*=============CONSTRUCTEURS=================*/		
+
 	/**
 	 * Constructeur la classe Calculatrice
 	 * @param valeurCourante
@@ -25,68 +26,82 @@ public class Calculatrice {
 		this.valeurCourante = 0;
 	}	
 
-/*================Getters & Setters===========*/
+/*=============Getters & Setters=================*/
 	
 	/**
-	 * @return la valeurCourante actuellement affichée sur la calculatrice
+	 * @return la valeurCourante actuellement affichÃ©e sur la calculatrice
 	 */
 	public double getValeurCourante() {
 		return valeurCourante;
 	}
 	
 	/**
-	 * @param valeurCourante la nouvelle valeur à afficher sur la calculatrice
+	 * @param valeurCourante la nouvelle valeur Ã  afficher sur la calculatrice
 	 */
 	public void setValeurCourante(double valeurCourante) {
 		this.valeurCourante = valeurCourante;
 	}
 	
-/*================Methodes===========*/
+/*=============Methodes=================*/
 	
 	/**
-	 * Additionne un nombre à la valeur courante
-	 * @param n le nombre à ajouter à la valeur courante de la calculatrice
+	 * Additionne un nombre Ã  la valeur courante
+	 * @param n le nombre Ã  ajouter Ã  la valeur courante de la calculatrice
 	 */
 	public void ajoute(double n) {
 		valeurCourante+=n;
 	}
+	
 	/**
-	 * Soustrait un nombre à la valeur courante
-	 * @param n le nombre à soustraire à la valeur courante de la calculatrice
+	 * Soustrait un nombre Ã  la valeur courante
+	 * @param n le nombre Ã  soustraire Ã  la valeur courante de la calculatrice
 	 */
 	public void soustrait(double n) {
 		valeurCourante-=n;
 	}
 	
 	/**
-	 * Elève la valeur courante au carré
+	 * ElÃ¨ve la valeur courante au carrÃ©
 	 */
 	public void carre() {
 		valeurCourante*=valeurCourante;
 	}
 	
 	/**
-	 * Renvoie une représentation textuelle de la valeur affichée sur la calculatrice
+	 * Renvoie une reprÃ©sentation textuelle de la valeur affichÃ©e sur la calculatrice
 	 */
 	public String toString() {
 		return "La calculatrice affiche la valeur " + getValeurCourante();
 	}
-
 	
-/*================Main===========*/
 	/**
-	 * Méthode main permettant de lancer un test rapide de la classe calculatrice.
+	 * @param c un objet calculatrice 
+	 * @return -1 si la valeure courante de celle ci est plus petite
+	 * @return 1 si la valeure courante de celle ci est plus grande
+	 * @return 0 si les valeures courantes sont egales 
+	 */
+	public int compareTo(Calculatrice c) {
+		if(this.valeurCourante < c.getValeurCourante()) {return -1;}
+		else if (this.valeurCourante > c.getValeurCourante()) {return 1;}
+		else return 0; 
+	}
+	
+/*=============Main=================*/		
+	/**
+	 * MÃ©thode main permettant de lancer un test rapide de la classe calculatrice.
 	 * @param args les arguments de la ligne de commande
 	 */
 	public static void main(String[] args) {
-		Calculatrice myCalc;
+
 		
-		if(args.length==0) {
-			myCalc = new Calculatrice();
-		}
-		else {
-			myCalc = new Calculatrice(Double.parseDouble(args[0]));
-		}
-		System.out.println(myCalc);
+		Calculatrice myCalc = new Calculatrice(100);
+		Calculatrice c2 = new Calculatrice(100);
+		System.out.println(myCalc.compareTo(c2));
+		
+		//myCalc.ajoute(5);
+		//myCalc.soustrait(2);
+		//myCalc.setValeurCourante(5);
+		//System.out.println(myCalc.valeurCourante);
 	}
+
 }

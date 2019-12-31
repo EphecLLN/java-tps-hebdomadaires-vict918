@@ -58,9 +58,9 @@ public class Independant extends Personne {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		Independant i = new Independant("cotton", "victor", 123, "987"); 
+		Independant i = new Independant("cotton", "victor", 123, "15000"); 
 		Independant a = new Independant("TOTO", "tata", 123, "15000"); 
-		i.equals(a); 
-		System.out.println(i);
+		; 
+		System.out.println(i.equals(a));
 	}
 }
